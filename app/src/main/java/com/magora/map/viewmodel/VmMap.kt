@@ -10,6 +10,8 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.magora.map.R
+import com.magora.map.utils.MarkerDescription
+import com.magora.map.utils.MarkerGenerator
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.resume
@@ -34,6 +36,12 @@ class VmMap(app: Application) : AndroidViewModel(app), CoroutineScope {
     private val _myLocationLiveData = MutableLiveData<LocationEvents>()
     val myLocationLiveData: LiveData<LocationEvents>
         get() = _myLocationLiveData
+
+    private val _markersLiveData = MutableLiveData<List<MarkerDescription>>()
+    val markersLiveData: LiveData<List<MarkerDescription>>
+        get() = _markersLiveData
+
+    private val markersGenerator = MarkerGenerator()
 
     fun onMapReady() {
         loadMapStyle()
@@ -61,11 +69,19 @@ class VmMap(app: Application) : AndroidViewModel(app), CoroutineScope {
 
     private fun onCurrentLocationLoaded(location: Location) {
         _myLocationLiveData.value = LocationEvents.Loaded(location)
+        regenerateMarkers(location)
     }
 
     private fun onCurrentLocationLoadError(error: Throwable?) {
         _myLocationLiveData.value = LocationEvents.Error(getString(R.string.error_cant_get_location))
         error?.printStackTrace()
+    }
+
+    private fun regenerateMarkers(aroundLocation: Location) {
+        launch {
+            val markers = markersGenerator.generateMarkers(aroundLocation)
+            _markersLiveData.value = markers
+        }
     }
 
     fun onCurrentLocationButtonClicked() {

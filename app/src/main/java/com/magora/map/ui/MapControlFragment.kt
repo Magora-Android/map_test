@@ -15,6 +15,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.magora.map.R
+import com.magora.map.utils.MarkerDescription
 import com.magora.map.viewmodel.LocationEvents
 import com.magora.map.viewmodel.VmMap
 
@@ -54,6 +55,7 @@ class MapControlFragment : BaseFragment(), OnMapReadyCallback {
     private fun subscribeToEvents() {
         viewModel.mapStyleLiveData.observe(this, Observer { onMapOptionsLoaded(it) })
         viewModel.myLocationLiveData.observe(this, Observer { onMyLocationEvent(it) })
+        viewModel.markersLiveData.observe(this, Observer { onMarkersLoaded(it) })
     }
 
     private fun onMapOptionsLoaded(options: MapStyleOptions?) {
@@ -80,6 +82,18 @@ class MapControlFragment : BaseFragment(), OnMapReadyCallback {
         }
     }
 
+    private fun onMarkersLoaded(markers: List<MarkerDescription>) {
+        googleMap.clear()
+        markers.forEach { description ->
+            val marker = googleMap.addMarker(description.options)
+            marker.tag = description
+        }
+    }
+
+    private fun onMarkerClicked(description: MarkerDescription) {
+        Toast.makeText(context, "Clicked on: $description", Toast.LENGTH_SHORT).show()
+    }
+
     override fun onMapReady(map: GoogleMap) {
         googleMap = map
         initMapUi(map)
@@ -90,6 +104,11 @@ class MapControlFragment : BaseFragment(), OnMapReadyCallback {
         map.isMyLocationEnabled = true
         map.uiSettings.isMyLocationButtonEnabled = false
         map.uiSettings.isMapToolbarEnabled = false
+
+        map.setOnMarkerClickListener { marker ->
+            (marker.tag as? MarkerDescription)?.let(::onMarkerClicked)
+            true
+        }
     }
 
     companion object {
