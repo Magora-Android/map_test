@@ -30,6 +30,7 @@ class MapControlFragment : BaseFragment(), OnMapReadyCallback {
     private lateinit var googleMap: GoogleMap
     private lateinit var viewModel: VmMap
     private var btnMyLocation: View? = null
+    private var btnCancel: View? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
         inflater.inflate(R.layout.fragment_map, container, false)
@@ -51,6 +52,14 @@ class MapControlFragment : BaseFragment(), OnMapReadyCallback {
         btnMyLocation = v.findViewById<View>(R.id.btn_my_location)?.apply {
             setOnClickListener {
                 viewModel.onCurrentLocationButtonClicked()
+            }
+        }
+
+        btnCancel = v.findViewById<View>(R.id.btn_cancel)?.apply {
+            setOnClickListener {
+                if (it.alpha == 1f && it.visibility == View.VISIBLE) {
+                    hideMarkerInfo()
+                }
             }
         }
     }
@@ -100,6 +109,12 @@ class MapControlFragment : BaseFragment(), OnMapReadyCallback {
 
         if (rootContainer.currentState == R.id.set_info_hidden) {
             rootContainer.transitionToState(R.id.set_info_visible_half)
+        }
+    }
+
+    private fun hideMarkerInfo() {
+        if (rootContainer.currentState != R.id.set_info_hidden) {
+            rootContainer.transitionToState(R.id.set_info_hidden)
         }
     }
 

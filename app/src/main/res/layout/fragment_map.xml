@@ -48,11 +48,36 @@
     <ImageButton
         android:layout_width="62dp"
         android:layout_height="62dp"
+        android:id="@+id/btn_share"
+        android:layout_margin="16dp"
+        android:scaleType="center"
+        android:background="@null"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_share"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:layout_width="62dp"
+        android:layout_height="62dp"
         android:id="@+id/btn_notifications"
         android:layout_margin="16dp"
         android:background="@null"
         android:importantForAccessibility="no"
         android:src="@drawable/bg_notifications_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:id="@+id/btn_cancel"
+        android:layout_margin="16dp"
+        android:background="@null"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_cancel"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -48,8 +48,24 @@
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <PropertySet android:visibility="visible" />
-
         </Constraint>
+
+        <Constraint android:id="@+id/btn_share">
+            <PropertySet android:visibility="invisible" />
+        </Constraint>
+
+        <Constraint android:id="@+id/btn_cancel">
+            <PropertySet android:visibility="invisible" />
+        </Constraint>
+
+        <Constraint android:id="@+id/btn_profile">
+            <PropertySet android:visibility="visible" />
+        </Constraint>
+
+        <Constraint android:id="@+id/btn_notifications">
+            <PropertySet android:visibility="visible" />
+        </Constraint>
+
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/set_info_visible_half">
@@ -72,6 +88,22 @@
 
             <PropertySet android:visibility="visible" />
         </Constraint>
+
+        <Constraint android:id="@+id/btn_share">
+            <PropertySet android:visibility="invisible" />
+        </Constraint>
+
+        <Constraint android:id="@+id/btn_cancel">
+            <PropertySet android:visibility="invisible" />
+        </Constraint>
+
+        <Constraint android:id="@+id/btn_profile">
+            <PropertySet android:visibility="visible" />
+        </Constraint>
+
+        <Constraint android:id="@+id/btn_notifications">
+            <PropertySet android:visibility="visible" />
+        </Constraint>
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/set_info_visible_full">
@@ -92,6 +124,22 @@
                 app:layout_constraintBottom_toTopOf="@id/location_data"
                 app:layout_constraintEnd_toEndOf="parent" />
 
+            <PropertySet android:visibility="invisible" />
+        </Constraint>
+
+        <Constraint android:id="@+id/btn_share">
+            <PropertySet android:visibility="visible" />
+        </Constraint>
+
+        <Constraint android:id="@+id/btn_cancel">
+            <PropertySet android:visibility="visible" />
+        </Constraint>
+
+        <Constraint android:id="@+id/btn_profile">
+            <PropertySet android:visibility="invisible" />
+        </Constraint>
+
+        <Constraint android:id="@+id/btn_notifications">
             <PropertySet android:visibility="invisible" />
         </Constraint>
     </ConstraintSet>
