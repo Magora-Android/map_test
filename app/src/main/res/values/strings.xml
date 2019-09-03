@@ -2,4 +2,7 @@
     <string name="app_name">Map</string>
     <string name="title_activity_maps">Map</string>
     <string name="error_cant_get_location">Can\'t get location</string>
+    <string name="time_ago">7 mins ago</string>
+    <string name="btn_export_pdf">Export PDF</string>
+    <string name="btn_play_audio">Audio.mp3</string>
 </resources>

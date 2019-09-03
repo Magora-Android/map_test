@@ -12,12 +12,15 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.magora.map.R
 import com.magora.map.utils.MarkerDescription
 import com.magora.map.viewmodel.LocationEvents
 import com.magora.map.viewmodel.VmMap
+import kotlinx.android.synthetic.main.fragment_map.*
+import kotlinx.android.synthetic.main.include_bottom_sheet.*
 
 /*
  * Created by Magora Systems. 
@@ -73,7 +76,8 @@ class MapControlFragment : BaseFragment(), OnMapReadyCallback {
             }
             is LocationEvents.Loaded -> {
                 btnMyLocation?.isEnabled = true
-                googleMap.animateCamera(CameraUpdateFactory.newLatLng(LatLng(event.location.latitude, event.location.longitude)))
+                val position = CameraPosition(LatLng(event.location.latitude, event.location.longitude), 10.0f, 0f, 0f)
+                googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(position))
             }
             is LocationEvents.Error -> {
                 btnMyLocation?.isEnabled = true
@@ -91,7 +95,12 @@ class MapControlFragment : BaseFragment(), OnMapReadyCallback {
     }
 
     private fun onMarkerClicked(description: MarkerDescription) {
-        Toast.makeText(context, "Clicked on: $description", Toast.LENGTH_SHORT).show()
+        textAlertLabel.text = description.type
+        textAlertTitle.text = description.title
+
+        if (rootContainer.currentState == R.id.set_info_hidden) {
+            rootContainer.transitionToState(R.id.set_info_visible_half)
+        }
     }
 
     override fun onMapReady(map: GoogleMap) {

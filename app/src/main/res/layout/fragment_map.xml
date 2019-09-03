@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/root_container"
+    android:id="@+id/rootContainer"
     app:layoutDescription="@xml/scene_locations_map">
 
     <fragment
@@ -18,23 +18,23 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:id="@+id/btn_profile"
-        android:src="@drawable/bg_profile_button"
-        android:background="@null"
         android:layout_margin="16dp"
+        android:background="@null"
         android:importantForAccessibility="no"
+        android:src="@drawable/bg_profile_button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:id="@+id/btn_notifications"
-        android:src="@drawable/bg_notifications_button"
-        android:background="@null"
         android:layout_margin="16dp"
+        android:background="@null"
         android:importantForAccessibility="no"
+        android:src="@drawable/bg_notifications_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
@@ -42,34 +42,14 @@
         android:id="@+id/btn_my_location"
         android:layout_margin="16dp"
         android:src="@drawable/ic_gps_indicator"
+        android:transformPivotX="0dp"
+        android:transformPivotY="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <LinearLayout
+    <include
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/location_data"
-        android:background="#FFF"
-        android:orientation="vertical"
-        android:padding="16dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lorem Ipsum"
-            android:textSize="32sp" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="24dp"
-            android:background="#ff00" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="button" />
-
-    </LinearLayout>
-
+        layout="@layout/include_bottom_sheet" />
 </androidx.constraintlayout.motion.widget.MotionLayout>

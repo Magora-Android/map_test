@@ -16,7 +16,7 @@ import kotlinx.coroutines.withContext
  * 03.09.19.
  */
 
-data class MarkerDescription(val options: MarkerOptions, val title: String, val isAlert: Boolean)
+data class MarkerDescription(val options: MarkerOptions, val type: String, val title: String, val isAlert: Boolean)
 
 enum class Alerts(val color: Int) {
     MINOR_DEFAULT(Color.parseColor("#19B775")),
@@ -35,29 +35,44 @@ class MarkerGenerator {
 
     suspend fun generateMarkers(centerLocation: Location): List<MarkerDescription> = withContext(Dispatchers.IO) {
         listOf(
-            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.MINOR_DEFAULT.color), title = "Small alert", isAlert = false),
-            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.MINOR_DEFAULT.color), title = "Small alert", isAlert = false),
-            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.MINOR_DEFAULT.color), title = "Small alert", isAlert = false),
+            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.MINOR_DEFAULT.color), type = "Alert", title = "Small alert", isAlert = false),
+            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.MINOR_DEFAULT.color), type = "Alert", title = "Small alert", isAlert = false),
+            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.MINOR_DEFAULT.color), type = "Alert", title = "Small alert", isAlert = false),
 
-            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.POLICE_ACTIVITY.color), title = "Police alert", isAlert = false),
-            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.POLICE_ACTIVITY.color), title = "Police alert", isAlert = false),
-            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.POLICE_ACTIVITY.color), title = "Police alert", isAlert = false),
+            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.POLICE_ACTIVITY.color), type = "Alert", title = "Police alert", isAlert = false),
+            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.POLICE_ACTIVITY.color), type = "Alert", title = "Police alert", isAlert = false),
+            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.POLICE_ACTIVITY.color), type = "Alert", title = "Police alert", isAlert = false),
 
-            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.EXTREME_DEFAULT.color), title = "High extreme alert", isAlert = false),
-            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.EXTREME_DEFAULT.color), title = "High extreme alert", isAlert = false),
-            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.EXTREME_DEFAULT.color), title = "High extreme alert", isAlert = false),
+            MarkerDescription(
+                generateMarkerOptions(centerLocation, Alerts.EXTREME_DEFAULT.color),
+                type = "Extreme Alert",
+                title = "High extreme alert",
+                isAlert = true
+            ),
+            MarkerDescription(
+                generateMarkerOptions(centerLocation, Alerts.EXTREME_DEFAULT.color),
+                type = "Extreme Alert",
+                title = "High extreme alert",
+                isAlert = true
+            ),
+            MarkerDescription(
+                generateMarkerOptions(centerLocation, Alerts.EXTREME_DEFAULT.color),
+                type = "Extreme Alert",
+                title = "High extreme alert",
+                isAlert = true
+            ),
 
-            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.MODERATE_DEFAULT.color), title = "Moderate alert", isAlert = false),
-            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.MODERATE_DEFAULT.color), title = "Moderate alert", isAlert = false),
-            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.MODERATE_DEFAULT.color), title = "Moderate alert", isAlert = false),
+            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.MODERATE_DEFAULT.color), type = "Alert", title = "Moderate alert", isAlert = false),
+            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.MODERATE_DEFAULT.color), type = "Alert", title = "Moderate alert", isAlert = false),
+            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.MODERATE_DEFAULT.color), type = "Alert", title = "Moderate alert", isAlert = false),
 
-            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.TRAFFIC_DEFAULT.color), title = "Traffic alert", isAlert = false),
-            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.TRAFFIC_DEFAULT.color), title = "Traffic alert", isAlert = false),
-            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.TRAFFIC_DEFAULT.color), title = "Traffic alert", isAlert = false),
+            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.TRAFFIC_DEFAULT.color), type = "Alert", title = "Traffic alert", isAlert = false),
+            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.TRAFFIC_DEFAULT.color), type = "Alert", title = "Traffic alert", isAlert = false),
+            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.TRAFFIC_DEFAULT.color), type = "Alert", title = "Traffic alert", isAlert = false),
 
-            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.ARSON_DEFAULT.color), title = "Arson alert", isAlert = false),
-            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.ARSON_DEFAULT.color), title = "Arson alert", isAlert = false),
-            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.ARSON_DEFAULT.color), title = "Arson alert", isAlert = false)
+            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.ARSON_DEFAULT.color), type = "Alert", title = "Arson alert", isAlert = false),
+            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.ARSON_DEFAULT.color), type = "Alert", title = "Arson alert", isAlert = false),
+            MarkerDescription(generateMarkerOptions(centerLocation, Alerts.ARSON_DEFAULT.color), type = "Alert", title = "Arson alert", isAlert = false)
         )
     }
 

@@ -57,7 +57,7 @@
         <Constraint android:id="@+id/location_data">
             <Layout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="180dp"
                 app:layout_constraintBottom_toBottomOf="parent" />
         </Constraint>
 
@@ -92,7 +92,7 @@
                 app:layout_constraintBottom_toTopOf="@id/location_data"
                 app:layout_constraintEnd_toEndOf="parent" />
 
-            <PropertySet android:visibility="gone" />
+            <PropertySet android:visibility="invisible" />
         </Constraint>
     </ConstraintSet>
 </MotionScene>

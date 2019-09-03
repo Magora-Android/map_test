@@ -17,4 +17,5 @@
     <color name="primaryVariant">#05121D</color>
     <color name="primaryBlue">#1F76FF</color>
     <color name="error">#FF2E79</color>
+    <color name="colorSubheader">#707070</color>
 </resources>

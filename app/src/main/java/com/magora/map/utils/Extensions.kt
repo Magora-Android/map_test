@@ -28,8 +28,8 @@ val Float.dp
 fun Location.randomNearby(): LatLng {
     fun sign() = if(Math.random() > 0.5) 1 else -1
 
-    val lat = latitude + sign() * Math.random()
-    val lon = longitude + sign() * Math.random()
+    val lat = latitude + sign() * Math.random() * 0.3f
+    val lon = longitude + sign() * Math.random() * 0.3f
 
     return LatLng(lat, lon)
 }
