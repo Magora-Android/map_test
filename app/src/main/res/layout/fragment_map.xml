@@ -14,11 +14,31 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         tools:context="com.magora.map.ui.MapControlFragment" />
 
-    <ImageButton
-        android:layout_width="48dp"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="48dp"
+        android:id="@+id/btnAroundMe"
+        android:layout_marginTop="16sp"
+        android:background="@drawable/bg_around_me"
+        android:drawableEnd="@drawable/ic_arrow_down"
+        android:drawablePadding="8dp"
+        android:drawableStart="@drawable/ic_gps_indicator"
+        android:gravity="center"
+        android:paddingEnd="16dp"
+        android:paddingStart="16dp"
+        android:text="@string/btn_around_me"
+        android:textColor="@color/colorOnSurface"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageButton
+        android:layout_width="62dp"
+        android:layout_height="62dp"
         android:id="@+id/btn_profile"
         android:layout_margin="16dp"
+        android:scaleType="center"
         android:background="@null"
         android:importantForAccessibility="no"
         android:src="@drawable/bg_profile_button"
@@ -26,8 +46,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="62dp"
+        android:layout_height="62dp"
         android:id="@+id/btn_notifications"
         android:layout_margin="16dp"
         android:background="@null"

@@ -5,4 +5,5 @@
     <string name="time_ago">7 mins ago</string>
     <string name="btn_export_pdf">Export PDF</string>
     <string name="btn_play_audio">Audio.mp3</string>
+    <string name="btn_around_me">Around Me</string>
 </resources>

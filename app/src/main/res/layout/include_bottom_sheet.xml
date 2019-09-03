@@ -7,6 +7,7 @@
     android:background="?colorSurface"
     android:orientation="vertical"
     android:paddingTop="10dp">
+
     <View
         android:layout_width="36dp"
         android:layout_height="3.5dp"
@@ -28,6 +29,7 @@
             android:layout_gravity="start|center_vertical"
             android:textColor="?colorError"
             android:textSize="19sp"
+            android:textStyle="bold"
             tools:text="Extreme alert" />
 
         <TextView
@@ -48,6 +50,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:textColor="?colorOnSurface"
+        android:textStyle="bold"
         android:textSize="24sp"
         tools:text="Extreme alert" />
 
@@ -65,11 +68,13 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/btn_export_pdf"
             android:text="@string/btn_export_pdf" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/btn_play_audio"
             android:text="@string/btn_play_audio" />
 
     </LinearLayout>
