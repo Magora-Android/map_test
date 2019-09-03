@@ -2,12 +2,12 @@
 <resources>
     <color name="colorPrimary">@color/black</color>
     <color name="colorPrimaryVariant">@color/primaryVariant</color>
-    <color name="colorSecondary">@color/primaryBlue</color>
+    <color name="colorSecondary">@color/primaryVariant</color>
     <color name="backgroundColor">@color/black</color>
     <color name="surfaceColor">@color/primaryVariant</color>
     <color name="errorColor">@color/error</color>
     <color name="colorOnPrimary">@color/white</color>
-    <color name="colorOnSecondary">@color/white</color>
+    <color name="colorOnSecondary">@color/primaryBlue</color>
     <color name="colorOnBackground">@color/white</color>
     <color name="colorOnSurface">@color/white</color>
     <color name="colorOnError">@color/white</color>
