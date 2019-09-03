@@ -1,5 +1,6 @@
 package com.magora.map.ui
 
+import android.Manifest
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -19,6 +20,7 @@ import com.magora.map.R
 import com.magora.map.utils.MarkerDescription
 import com.magora.map.viewmodel.LocationEvents
 import com.magora.map.viewmodel.VmMap
+import com.magora.requestor.Requestor
 import kotlinx.android.synthetic.main.fragment_map.*
 import kotlinx.android.synthetic.main.include_bottom_sheet.*
 
@@ -38,9 +40,23 @@ class MapControlFragment : BaseFragment(), OnMapReadyCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProviders.of(this)[VmMap::class.java]
+        Requestor().on(this).request(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION)) { result ->
+            if (result[0].isGranted) {
+                permissionsGranted()
+            } else {
+                permissionsDenied()
+            }
+        }
+    }
+
+    private fun permissionsGranted() {
         initMap()
-        initButtons(view)
+        initButtons(view!!)
         subscribeToEvents()
+    }
+
+    private fun permissionsDenied() {
+        Toast.makeText(context, "Permissions denied", Toast.LENGTH_SHORT).show()
     }
 
     private fun initMap() {
@@ -106,6 +122,7 @@ class MapControlFragment : BaseFragment(), OnMapReadyCallback {
     private fun onMarkerClicked(description: MarkerDescription) {
         textAlertLabel.text = description.type
         textAlertTitle.text = description.title
+
 
         if (rootContainer.currentState == R.id.set_info_hidden) {
             rootContainer.transitionToState(R.id.set_info_visible_half)

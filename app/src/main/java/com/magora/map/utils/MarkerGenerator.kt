@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.location.Location
 import androidx.annotation.ColorInt
+import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.coroutines.Dispatchers
@@ -16,7 +17,7 @@ import kotlinx.coroutines.withContext
  * 03.09.19.
  */
 
-data class MarkerDescription(val options: MarkerOptions, val type: String, val title: String, val isAlert: Boolean)
+data class MarkerDescription(val options: MarkerOptions, val selectedIcon: BitmapDescriptor? = null, val type: String, val title: String, val isAlert: Boolean)
 
 enum class Alerts(val color: Int) {
     MINOR_DEFAULT(Color.parseColor("#19B775")),
@@ -45,18 +46,21 @@ class MarkerGenerator {
 
             MarkerDescription(
                 generateMarkerOptions(centerLocation, Alerts.EXTREME_DEFAULT.color),
+                selectedIcon = BitmapDescriptorFactory.fromBitmap(generateSelectedMarkerBitmap(Alerts.EXTREME_DEFAULT.color)),
                 type = "Extreme Alert",
                 title = "High extreme alert",
                 isAlert = true
             ),
             MarkerDescription(
                 generateMarkerOptions(centerLocation, Alerts.EXTREME_DEFAULT.color),
+                selectedIcon = BitmapDescriptorFactory.fromBitmap(generateSelectedMarkerBitmap(Alerts.EXTREME_DEFAULT.color)),
                 type = "Extreme Alert",
                 title = "High extreme alert",
                 isAlert = true
             ),
             MarkerDescription(
                 generateMarkerOptions(centerLocation, Alerts.EXTREME_DEFAULT.color),
+                selectedIcon = BitmapDescriptorFactory.fromBitmap(generateSelectedMarkerBitmap(Alerts.EXTREME_DEFAULT.color)),
                 type = "Extreme Alert",
                 title = "High extreme alert",
                 isAlert = true
@@ -91,6 +95,23 @@ class MarkerGenerator {
         canvas.drawCircle(center, center, radius, paint)
         paint.alpha = 255
         canvas.drawCircle(center, center, radius - 4, paint)
+
+        return result
+    }
+
+    private fun generateSelectedMarkerBitmap(@ColorInt color: Int): Bitmap {
+        val diameter = 40.dp
+        val center = 20f.dp
+        val radius = center
+        val result = Bitmap.createBitmap(diameter, diameter, Bitmap.Config.ARGB_8888)
+        result.eraseColor(Color.TRANSPARENT)
+
+        val canvas = Canvas(result)
+        paint.color = color
+        paint.alpha = 128
+        canvas.drawCircle(center, center, radius, paint)
+        paint.alpha = 255
+        canvas.drawCircle(center, center, radius - 8, paint)
 
         return result
     }

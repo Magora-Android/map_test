@@ -7,12 +7,18 @@
     android:id="@+id/rootContainer"
     app:layoutDescription="@xml/scene_locations_map">
 
-    <fragment
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        tools:context="com.magora.map.ui.MapControlFragment" />
+        android:id="@+id/map_container">
+
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            tools:context="com.magora.map.ui.MapControlFragment" />
+    </FrameLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -38,9 +44,9 @@
         android:layout_height="62dp"
         android:id="@+id/btn_profile"
         android:layout_margin="16dp"
-        android:scaleType="center"
         android:background="@null"
         android:importantForAccessibility="no"
+        android:scaleType="center"
         android:src="@drawable/bg_profile_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -50,9 +56,9 @@
         android:layout_height="62dp"
         android:id="@+id/btn_share"
         android:layout_margin="16dp"
-        android:scaleType="center"
         android:background="@null"
         android:importantForAccessibility="no"
+        android:scaleType="center"
         android:src="@drawable/ic_share"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
